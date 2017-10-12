@@ -6,7 +6,7 @@ from django.contrib.auth.models import BaseUserManager
 class UserProfileManager(BaseUserManager):
 	""" Helps Django work with custom user model. """
 
-	def create_user(self, email, name, password=None):
+	def create_user(self, email, name, group, password=None):
 		"""Creates a new user profile object"""
 
 		if not email:
