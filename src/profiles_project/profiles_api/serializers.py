@@ -34,6 +34,9 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 		fields = ('url', 'name')
 
 class ProfileFeedItemSerializer(serializers.HyperlinkedModelSerializer):
+	""" A serializer for profile feed items """
+
 	class Meta:
-		model = ProfileFeedItem
-		fields = ('user_profile', 'status_text', 'created_on')
+		model = models.ProfileFeedItem
+		fields = ('id', 'user_profile', 'status_text', 'created_on')
+		extra_kwargs = {'user_profile': {'read_only': True}}

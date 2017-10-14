@@ -9,7 +9,7 @@ router.register('hello-viewset', views.HelloViewSet, base_name='hello-viewset')
 router.register('profile', views.UserProfileViewSet)
 router.register('group', views.GroupViewSet)
 router.register('login', views.LoginViewSet, base_name='login')
-router.register('profile-feed-item', views.ProfileFeedItemViewSet)
+router.register('feed', views.UserProfileFeedViewSet)
 
 urlpatterns = [
 	url(r'^hello-view/', views.HelloApiView.as_view()),
