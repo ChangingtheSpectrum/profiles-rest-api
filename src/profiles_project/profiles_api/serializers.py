@@ -32,3 +32,8 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = Group
 		fields = ('url', 'name')
+
+class ProfileFeedItemSerializer(serializers.HyperlinkedModelSerializer):
+	class Meta:
+		model = ProfileFeedItem
+		fields = ('user_profile', 'status_text', 'created_on')

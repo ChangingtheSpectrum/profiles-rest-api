@@ -15,7 +15,7 @@ from . import serializers
 from . import models
 from . import permissions
 
-from profiles_api.serializers import GroupSerializer
+from profiles_api.serializers import GroupSerializer, ProfileFeedItemSerializer
 
 class HelloApiView(APIView):
 	"""Test API View"""
@@ -116,7 +116,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 	queryset = models.UserProfile.objects.all()
 	authentication_classes = (TokenAuthentication,)
 	permission_classes = (permissions.UpdateOwnProfile,)
-	filter_backends = (filters.SearchFilter, filters.OrderingFilter)
+	filter_backends = (filters.SearchFilter, filters.OrderingFilter,)
 	search_fields = ('name', 'email',)
 	ordering_fields = ('id', 'name',)
 
@@ -134,3 +134,8 @@ class LoginViewSet(viewsets.ViewSet):
 		"""Use the ObtainAuthToken APIView to validate and create a token"""
 
 		return ObtainAuthToken().post(request)
+
+class ProfileFeedItemViewSet(viewsets.ViewSet):
+
+	serializer_class = ProfileFeedItemSerializer
+	queryset = ProfileFeedItem.objects.all()
